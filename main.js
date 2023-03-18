@@ -12,6 +12,11 @@ const telefone = document.querySelector('#telefone-contato').value;
 const contatoExistente = contatos.find(contato => contato.nome === nome);
 const telefoneExistente = contatos.find(contato => contato.telefone === telefone);
 
+if (nome === '' || telefone === '') {
+    alert('Por favor, preencha todos os campos antes de cadastrar um contato.');
+    return;
+}
+
 if (contatoExistente) {
     alert('Esse contato já existe na agenda!');
     return;
