@@ -8,6 +8,18 @@ function adicionarContato() {
 const nome = document.querySelector('#nome-contato').value;
 const telefone = document.querySelector('#telefone-contato').value;
 
+const telefoneRegex = /^\d{4,5}-?\d{4}$/;
+if (!telefoneRegex.test(telefone)) {
+    alert('Por favor, insira um número de telefone válido.');
+    return;
+}
+
+const telefoneNumeros = telefone.replace(/-/g, '');
+if (telefoneNumeros.length < 8) {
+    alert('Por favor, insira um número de telefone com pelo menos 8 dígitos.');
+    return;
+}
+
 const contatoExistente = contatos.find(contato => contato.nome === nome);
 const telefoneExistente = contatos.find(contato => contato.telefone === telefone);
 
